@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
 
+export interface Tasklist {
+  title: string;
+  goal: string;
+  affirmation: string;
+  tasks: Array<string>;
+  taskStates: Array<boolean>;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class TasklistService {
 
-	tasklists: Array<Object> = [
+	private tasklists: Array<Tasklist> = [
 		{
 			title: "Clean Room",
 			goal: "I want to have a happy, healthy home!",
@@ -14,6 +22,11 @@ export class TasklistService {
 				"Make Bed",
 				"Do My Dishes",
 				"Do My Laundry"
+			],
+			taskStates: [
+				false,
+				false,
+				false
 			]
 		},
 		{
@@ -24,14 +37,31 @@ export class TasklistService {
 				"Brush Teeth",
 				"Shower",
 				"Make Breakfast"
+			],
+			taskStates: [
+				false,
+				false,
+				false
 			]
 		}
 	];
+	private activeTasklist: number = 0;
 
 	constructor() { }
 
 	getTasklists(){
 		return this.tasklists;
+	}
+
+	completeTask(tasklist, task, state){
+		this.tasklists[tasklist].taskStates[task] = state;
+		console.log(this.tasklists);
+	}
+
+	setActiveTasklist(id){
+		id.then(data => {
+			this.activeTasklist = data;
+		});		
 	}
 
 }

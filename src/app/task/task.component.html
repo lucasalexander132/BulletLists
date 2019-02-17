@@ -1,0 +1,4 @@
+<div (click)="completeTask()">
+	<div class="circle" [ngClass]="{'green': complete}"></div>
+	<span [ngClass]="{'strike': complete}">{{ task }}</span>
+</div>

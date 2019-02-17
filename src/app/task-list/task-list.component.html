@@ -1,12 +1,11 @@
-<ion-slides class="container center-div">
-	<ion-slide *ngFor="let tasklist of tasklists">
+<ion-slides class="container center-div" (ionSlideDidChange)="ionSlideDidChange($event)" #slides>
+	<ion-slide *ngFor="let tasklist of tasklists; let tasklistID = index">
 		<h1>{{ tasklist.title }}</h1>
 		<h4>{{ tasklist.goal }}</h4>
 
 		<div class="tasks">
-			<div *ngFor="let task of tasklist.tasks" class="task">
-				<div class="circle"></div>
-				<span>{{ task }}</span>
+			<div *ngFor="let task of tasklist.tasks; let taskID = index" class="task">
+				<app-task [task]="task" (completed)="(completeTask(tasklistID, taskID, $event))"></app-task>
 			</div>
 		</div>
 	</ion-slide>
