@@ -1,0 +1,12 @@
+<i class="fas fa-ellipsis-v fa-2x" (click)="toggleMenu()"></i>
+
+<div class="menu" *ngIf="menuState">
+	<i class="fas fa-times fa-2x" (click)="toggleMenu()"></i>
+
+	<div class="menu-items">
+		<p>New List</p>
+		<p>Edit This</p>
+		<p>Delete This</p>
+	</div>
+	
+</div>

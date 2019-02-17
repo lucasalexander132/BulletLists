@@ -1,0 +1,51 @@
+.circle {
+	position: relative;
+	display: inline-block;
+	height: 10px;
+	width: 10px;
+	border-radius: 100px;
+	background-color: #dfdfdf;
+	margin-right: 35px;
+}
+
+h1 {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: .8em;
+}
+
+.container {
+	width: 250px;
+	letter-spacing: 1px;
+}
+
+.center-div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.task {
+	margin: 25px auto;
+}
+
+.tasks {
+	padding: 15px 25px;
+}
+
+.swiper-slide {
+	text-align: left !important;
+	display: inline-block !important;
+	align-items: initial !important;
+	justify-content: left !important;
+}
+
+@media only (max-width: 450px) {
+  .container {
+  	width: 90vw;
+  }
+}

@@ -1,0 +1,24 @@
+i {
+	float: right;
+	margin: 15px;
+}
+
+.menu {
+	position: absolute;
+	right: 1px;
+	background-color: black;
+	width: 250px;
+	height: 100vh;
+	color: white;
+	font-weight: bold;
+	z-index: 100;
+}
+
+p {
+	margin: 15px;
+	font-size: 2em;
+}
+
+.menu-items {
+	margin: 100px 15px;
+}

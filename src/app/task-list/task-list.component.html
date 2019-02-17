@@ -1,0 +1,13 @@
+<ion-slides class="container center-div">
+	<ion-slide *ngFor="let tasklist of tasklists">
+		<h1>{{ tasklist.title }}</h1>
+		<h4>{{ tasklist.goal }}</h4>
+
+		<div class="tasks">
+			<div *ngFor="let task of tasklist.tasks" class="task">
+				<div class="circle"></div>
+				<span>{{ task }}</span>
+			</div>
+		</div>
+	</ion-slide>
+</ion-slides>
