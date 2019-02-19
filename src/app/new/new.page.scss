@@ -1,0 +1,78 @@
+ion-content {
+	font-family: 'Montserrat', sans-serif !important;
+	overflow: hidden;
+}
+
+input {
+	border: 0px solid transparent;
+	display: block;
+	width: 100%;
+}
+
+textarea {
+	border: 0px solid transparent;
+	display: block;
+	width: 100%;
+	resize: none;
+}
+
+.tiny-divider {
+	height: 0px;
+	width: 100px;
+	background-color: black;
+	margin-top: 3px;
+	margin-bottom: 15px;
+}
+
+input:focus, textarea:focus {
+	outline: none;
+}
+
+.h1 {
+	font-size: 2.5em;
+	font-weight: bold;
+	margin: 15px auto 0 auto;
+}
+
+.h4 {
+	font-size: 1em;
+	margin: 15px auto 0 auto;
+}
+
+.container {
+	width: 250px;
+	letter-spacing: 1px;
+}
+
+.center-div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.task {
+	margin: 25px auto 0 auto;
+}
+
+.tasks {
+	padding: 15px 25px;
+}
+
+.confirmation-container {
+	position: relative;
+	width: 80vw;
+	display: block;
+	margin: 0 auto;
+}
+
+i {
+	width: 50%;
+	text-align: center;
+}
+
+@media only (max-width: 450px) {
+  .container {
+  	width: 90vw;
+  }
+}

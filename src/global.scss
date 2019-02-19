@@ -10,6 +10,11 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
-body {
-	font-family: 'Montserrat', sans-serif;
+html {
+	font-family: 'Montserrat', sans-serif !important;
+}
+
+app-menu {
+	position: relative;
+	z-index: 1000;
 }

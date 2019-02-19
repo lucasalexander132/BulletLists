@@ -1,5 +1,7 @@
 {
-  "name": "bulletList",
-  "integrations": {},
+  "name": "bulletlists",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

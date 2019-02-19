@@ -5,8 +5,12 @@
 
 		<div class="tasks">
 			<div *ngFor="let task of tasklist.tasks; let taskID = index" class="task">
-				<app-task [task]="task" (completed)="(completeTask(tasklistID, taskID, $event))"></app-task>
+				<app-task [task]="task" [complete]="tasklist.taskStates[taskID]" (completed)="(completeTask(tasklistID, taskID, $event))" [disableEdit]="tasklist.disableEdit"></app-task>
 			</div>
 		</div>
+
+		<div class="redo" *ngIf="tasklist.taskStates[0] && tasklist.taskStates[1] && tasklist.taskStates[2]">
+			<i class="fas fa-redo-alt fa-3x" (click)="resetTasklist()"></i>
+		</div>		
 	</ion-slide>
 </ion-slides>

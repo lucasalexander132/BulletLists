@@ -1,11 +1,10 @@
 .circle {
-	position: relative;
 	display: inline-block;
 	height: 10px;
 	width: 10px;
 	border-radius: 100px;
 	background-color: #dfdfdf;
-	margin-right: 35px;
+	margin: 0 auto;
 }
 
 .green {
@@ -14,4 +13,20 @@
 
 .strike {
 	text-decoration: line-through;
+}
+
+span {
+	display: inline-block;
+	float: right;
+	width: 85%;
+}
+
+.container {
+	display: flex;
+}
+
+.center-div {
+	float: left;
+	display: inline-block;
+	width: 10%;
 }

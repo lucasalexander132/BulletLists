@@ -1,4 +1,6 @@
-<div (click)="completeTask()">
-	<div class="circle" [ngClass]="{'green': complete}"></div>
+<div class="container" (click)="completeTask()">
+	<div class="center-div">
+		<div class="circle" [ngClass]="{'green': complete}"></div>
+	</div>	
 	<span [ngClass]="{'strike': complete}">{{ task }}</span>
 </div>
