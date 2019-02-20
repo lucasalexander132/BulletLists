@@ -10,21 +10,27 @@ npm install
 ionic serve
 ```
 
-Or visit it here https://web.cs.dal.ca/~lucasc/portfolio/
+Or visit it here https://play.google.com/store/apps/details?id=io.bulletlists.lucasalexander
 
 ## What I learned
 
-- I actually have a lot of abstract project work I could add to this.
-- Portfolio design doesn't have to be glitzy or splashy, a one page spread can be nice.
-- Routing can be a weird issue when you don't use your own domain and are a subpath pretending you're the root.
+- Ionic 4 scrapped a lot of their scaffolding in favor of Angulars in the recent update
+- I'm more passionate about coding than I am about studying for tests
+- Translate for centering is pretty cool
+- Communication between components creates dependence hierarchies I don't like looking at. I try to strive for components that can be as independent as possible, so though I love services, they still seem integral to some component structures. I want to look up alternative patterns that focus on component structure communication.
 
 ## What was used
 
+- **Moment.js**
 - **Angular v6**
+- **Ionic v4**
 - **Font Awesome**
-- **Photoshop** (For design and images)
+- **Photoshop** (For design)
 
 ## Where I'd go with it
 
-- I'd like to add some relevant links at the top such as my github, and when I make one, my linked in, as well as my facebook where I'm throwing up a lot of my daily ui work.
-- I'd like to add Bulletlists as one of my projects.
+- Add a stats page! I want to know what bullet lists I'm doing the most. What day was my best day, what was my score yesterday, etc.
+- Add taskist genres (cleaning, coding, music, etc.) and be able to reorder tasklists, delete whole generes without removing the below lists, delete whole genres with removal, editing.
+- Add that stupid xml tag that keeps the view from rotating. That damn thing needs to be default.
+- Make the menu hitbox bigger
+- Make the menu area fixed with a higher z-index
