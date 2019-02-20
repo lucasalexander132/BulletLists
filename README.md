@@ -22,11 +22,11 @@ You can use the --lab flag to view on different devices, but I personally just u
 
 ## What was used
 
--**Moment.js**
--**Ionic v4**
--**Angular v6**
--**Font Awesome**
--**Photoshop** (For design)
+- **Moment.js**
+- **Ionic v4**
+- **Angular v6**
+- **Font Awesome**
+- **Photoshop** (For design)
 
 ## Where I'd go with it
 
