@@ -15,7 +15,7 @@ Or visit it here https://play.google.com/store/apps/details?id=io.bulletlists.lu
 ## What I learned
 
 - Ionic 4 scrapped a lot of their scaffolding in favor of Angulars in the recent update
-- I'm more passionate about coding than I am about studying for tests
+- I'm more passionate about coding than I am about studying for tests. I made this in 6 hours design and all (which is good for me)
 - Translate for centering is pretty cool
 - Communication between components creates dependence hierarchies I don't like looking at. I try to strive for components that can be as independent as possible, so though I love services, they still seem integral to some component structures. I want to look up alternative patterns that focus on component structure communication.
 
