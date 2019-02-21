@@ -24,6 +24,8 @@ Or visit it here https://play.google.com/store/apps/details?id=io.bulletlists.lu
 - **Moment.js**
 - **Angular v6**
 - **Ionic v4**
+- **HttpClient**
+- **JSON**
 - **Font Awesome**
 - **Photoshop** (For design)
 
