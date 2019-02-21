@@ -18,9 +18,15 @@
 
 			
 		</div>
-		<div class="circle center-div" [ngStyle]="{
-			'height': (tasklist.timesCompleted*5)/2+'px', 
-			'width': (tasklist.timesCompleted*5)/2+'px',
-			'background': 'linear-gradient(to right, '+tasklist.gradients[0]+','+ tasklist.gradients[1] +')'}"></div>
+		<div class="pixel-stack">
+			<div *ngFor="let pixel of tasklist.timesCompleted">
+				<div class="pixel" [ngStyle]="{'background': pixel.color }"></div>
+			</div>
+		</div>
+		<!-- <div class="circle center-div" [ngStyle]="{
+			'height': (tasklist.timesCompleted.length*5)/2+'px', 
+			'width': (tasklist.timesCompleted.length*5)/2+'px',
+			'background': 'linear-gradient(to right, '+tasklist.gradients[0]+','+ tasklist.gradients[1] +')'}"></div> -->
+		
 	</ion-slide>
 </ion-slides>

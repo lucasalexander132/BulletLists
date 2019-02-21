@@ -53,11 +53,9 @@ export class EditPage implements OnInit {
 				false
 			],
 			disableEdit: false,
-			timesCompleted: 0,
+			timesCompleted: [],
 			gradients: []
 		};
-
-		console.log(this.task1);
 		
 		this._ts.editTasklist(tasklist);
 		this._nc.navigateBack('/home');

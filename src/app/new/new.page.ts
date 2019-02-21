@@ -43,7 +43,7 @@ export class NewPage implements OnInit {
 				false
 			],
 			disableEdit: false,
-			timesCompleted: 0,
+			timesCompleted: [],
 			gradients: []
 		};
 		
