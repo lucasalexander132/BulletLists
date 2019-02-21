@@ -43,7 +43,8 @@ export class NewPage implements OnInit {
 				false
 			],
 			disableEdit: false,
-			timesCompleted: 0
+			timesCompleted: 0,
+			gradients: []
 		};
 		
 		this._nc.navigateBack('/home');

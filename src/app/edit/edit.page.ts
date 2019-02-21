@@ -53,7 +53,8 @@ export class EditPage implements OnInit {
 				false
 			],
 			disableEdit: false,
-			timesCompleted: 0
+			timesCompleted: 0,
+			gradients: []
 		};
 
 		console.log(this.task1);

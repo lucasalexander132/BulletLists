@@ -39,8 +39,8 @@ export class TasklistService {
 			disableEdit: false,
 			timesCompleted: 0,
 			gradients: [
-				"",
-				""
+				"#02AAB0",
+				"#00CDAC"
 			]
 		}
 	];
@@ -61,9 +61,9 @@ export class TasklistService {
 		disableEdit: false,
 		timesCompleted: 0,
 		gradients: [
-				"",
-				""
-			]
+			"#02AAB0",
+			"#00CDAC"
+		]
 	}
 	private activeTasklist: number = 0;
 	private completedTasklistsToday = 0;
@@ -71,7 +71,7 @@ export class TasklistService {
 
 	constructor(private _e: Events, private _stor: Storage, private _http: HttpClient) {
 
-		this.storeTasklists();
+		// this.storeTasklists();
 
 		_http.get('../assets/gradients.json').subscribe(data => {
 			this.gradients = data;
