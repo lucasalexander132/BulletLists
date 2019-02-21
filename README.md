@@ -36,6 +36,5 @@ Or visit it here https://play.google.com/store/apps/details?id=io.bulletlists.lu
 - Add a stats page! What day was my best day, what was my score yesterday, etc.
 - Add taskist genres (cleaning, coding, music, etc.) and be able to reorder tasklists, delete whole generes without removing the below lists, delete whole genres with removal, editing.
 - Make the first pixel bigger when you complete say, 500
-- Add that stupid xml tag that keeps the view from rotating. That damn thing needs to be default.
 - Make the menu hitbox bigger
 - Make the menu area fixed with a higher z-index
