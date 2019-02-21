@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Events } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import * as moment from 'moment';
 
 export interface Tasklist {
@@ -11,6 +12,8 @@ export interface Tasklist {
   tasks: Array<string>;
   taskStates: Array<boolean>;
   disableEdit: boolean;
+  timesCompleted: number;
+  gradients: Array<string>;
 }
 
 @Injectable({
@@ -33,7 +36,12 @@ export class TasklistService {
 				false,
 				false
 			],
-			disableEdit: false
+			disableEdit: false,
+			timesCompleted: 0,
+			gradients: [
+				"",
+				""
+			]
 		}
 	];
 	defaultTasklist = {
@@ -50,12 +58,24 @@ export class TasklistService {
 			false,
 			false
 		],
-		disableEdit: false
+		disableEdit: false,
+		timesCompleted: 0,
+		gradients: [
+				"",
+				""
+			]
 	}
 	private activeTasklist: number = 0;
 	private completedTasklistsToday = 0;
+	private gradients: Array<any>;
 
-	constructor(private _e: Events, private _stor: Storage) {
+	constructor(private _e: Events, private _stor: Storage, private _http: HttpClient) {
+
+		this.storeTasklists();
+
+		_http.get('../assets/gradients.json').subscribe(data => {
+			this.gradients = data;
+		});
 
 		_stor.get('tasklists').then((val) => {
 			if(val){
@@ -70,13 +90,11 @@ export class TasklistService {
 
 			if(lastDateOpened && (moment().diff(lastDateOpened, 'days') >= 1)){ // day is next day
 
-				console.log(1);
 				this.completedTasklistsToday = 0;
 				_stor.set('completedTasklistsToday', this.completedTasklistsToday);
 
 			} else if(lastDateOpened) { // day is still today
 
-				console.log(2);
 				_stor.get('completedTasklistsToday').then((val)=>{
 					this.completedTasklistsToday = val;
 					this._e.publish('completedTasklistsToday');
@@ -84,12 +102,12 @@ export class TasklistService {
 
 			} else { // day has never been set
 
-				console.log(3);
 				_stor.set('completedTasklistsToday', 0);
+
 			}
 
-			let now = moment().format('L'); // mm:dd:yyyy - No matter what we're setting the date to now since they just logged in, let difined for readability
-			_stor.set('lastDateOpened', now);
+			// mm:dd:yyyy - No matter what we're setting the date to now since they just logged in, let difined for readability
+			_stor.set('lastDateOpened', moment().format('L'));
 
 			this._e.publish('completedTasklistsToday');
 		});
@@ -130,6 +148,7 @@ export class TasklistService {
 
 		if(count == 3){
 			this.tasklists[tasklist].disableEdit = true;
+			this.tasklists[tasklist].timesCompleted++;
 			this.completedTasklistsToday++;
 			this._e.publish('complete');
 		}
@@ -163,6 +182,7 @@ export class TasklistService {
 	}
 
 	addTasklist(tasklist: Tasklist){
+		tasklist = this.addGradient(tasklist);
 		this.tasklists.push(tasklist);
 		this.update();
 	}
@@ -175,6 +195,12 @@ export class TasklistService {
 	private update(){
 		this._e.publish('update', true);
 		this.storeAll();
+	}
+
+	addGradient(tasklist: Tasklist){
+		let randIndex = Math.floor(Math.random() * this.gradients.length);
+		tasklist.gradients = [this.gradients[randIndex].colors[0], this.gradients[randIndex].colors[1]];
+		return tasklist;
 	}
 
 }

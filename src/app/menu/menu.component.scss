@@ -1,11 +1,16 @@
 i {
-	float: right;
-	margin: 15px;
+    position: absolute;
+	margin: 25px;
+	right: -100vw;
+}
+
+.fa-times {
+	right: 0vw;
 }
 
 .menu {
 	position: absolute;
-	right: 1px;
+	right: -100vw;
 	background-color: black;
 	width: 250px;
 	height: 100vh;

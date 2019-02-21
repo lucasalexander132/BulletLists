@@ -52,7 +52,8 @@ export class EditPage implements OnInit {
 				false,
 				false
 			],
-			disableEdit: false
+			disableEdit: false,
+			timesCompleted: 0
 		};
 
 		console.log(this.task1);

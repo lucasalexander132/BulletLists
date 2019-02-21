@@ -1,16 +1,26 @@
-<ion-slides class="container center-div" (ionSlideDidChange)="ionSlideDidChange($event)" #slides>
+<ion-slides (ionSlideDidChange)="ionSlideDidChange($event)" #slides>
 	<ion-slide *ngFor="let tasklist of tasklists; let tasklistID = index">
-		<h1>{{ tasklist.title }}</h1>
-		<h4>{{ tasklist.goal }}</h4>
 
-		<div class="tasks">
-			<div *ngFor="let task of tasklist.tasks; let taskID = index" class="task">
-				<app-task [task]="task" [complete]="tasklist.taskStates[taskID]" (completed)="(completeTask(tasklistID, taskID, $event))" [disableEdit]="tasklist.disableEdit"></app-task>
+		<div class="container center-div">
+
+			<h1>{{ tasklist.title }}</h1>
+			<h4>{{ tasklist.goal }}</h4>
+
+			<div class="tasks">
+				<div *ngFor="let task of tasklist.tasks; let taskID = index" class="task">
+					<app-task [task]="task" [complete]="tasklist.taskStates[taskID]" (completed)="(completeTask(tasklistID, taskID, $event))" [disableEdit]="tasklist.disableEdit"></app-task>
+				</div>
 			</div>
-		</div>
 
-		<div class="redo" *ngIf="tasklist.taskStates[0] && tasklist.taskStates[1] && tasklist.taskStates[2]">
-			<i class="fas fa-redo-alt fa-3x" (click)="resetTasklist()"></i>
-		</div>		
+			<div class="redo" *ngIf="tasklist.taskStates[0] && tasklist.taskStates[1] && tasklist.taskStates[2]">
+				<i class="fas fa-redo-alt fa-3x" (click)="resetTasklist()"></i>
+			</div>
+
+			
+		</div>
+		<div class="circle center-div" [ngStyle]="{
+			'height': (tasklist.timesCompleted*5)/2+'px', 
+			'width': (tasklist.timesCompleted*5)/2+'px',
+			'background': 'linear-gradient(to right, '+tasklist.gradients[0]+','+ tasklist.gradients[1] +')'}"></div>
 	</ion-slide>
 </ion-slides>

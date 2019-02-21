@@ -34,6 +34,7 @@ export class TaskListComponent implements OnInit {
 
 		this._e.subscribe('complete', ()=>{
 			this.presentAlert();
+			this.tasklists = this.tasklistService.getTasklists();
 		});
 
 		this._e.subscribe('reset', ()=>{

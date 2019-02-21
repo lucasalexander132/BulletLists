@@ -1,3 +1,8 @@
+ion-slides {
+	height: 100vh;
+	width: 100vw;
+}
+
 h1 {
 	font-size: 2em;
 	font-weight: bold;
@@ -13,7 +18,7 @@ h4 {
 }
 
 .center-div {
-    position: absolute;
+    position: relative;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -37,6 +42,21 @@ h4 {
 .redo {
 	width: 20%;
 	margin: 25px auto;
+}
+
+.circle {
+	position: absolute;
+	left: 50%;
+	top: 85%;
+	transform: translate(-50%, -50%);
+	background: #16A085;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #F4D03F, #16A085);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #F4D03F, #16A085); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	height: 1px;
+	width: 1px;
+	border-radius: 100%;
+	filter: blur(50px);
+	z-index: -100;
 }
 
 @media only (max-width: 450px) {
