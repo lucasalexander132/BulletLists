@@ -10,12 +10,14 @@ import { TasklistService } from '../tasklist.service';
 })
 export class NewPage implements OnInit {
 
-	title: string = "Title";
-	goal: string = "This is the goal of your list";
-	affirmation: string = "Affirmation when you complete this list";
-	task1: string = "First task";
-	task2: string = "Second task";
-	task3: string = "Third task";
+	formFields = {
+		title: "Title",
+		goal: "This is the goal of your list",
+		affirmation: "Affirmation when you complete this list",
+		task1: "First task",
+		task2: "Second task",
+		task3: "Third task"
+	}
 
 	constructor(private _nc: NavController, private _ts: TasklistService) { }
 
@@ -27,15 +29,25 @@ export class NewPage implements OnInit {
 	}
 
 	completeList(){
+		let tasklist = this.createTasklist();
+		this._nc.navigateBack('/home');
+		this._ts.addTasklist(tasklist);
+	}
 
-		let tasklist = {
-			title: this.title,
-			goal: this.goal,
-			affirmation: this.affirmation,
+	clear(input){
+		this.formFields[input] = "";
+	}
+
+	createTasklist(){
+		let tasklist;
+		return tasklist = {
+			title: this.formFields.title,
+			goal: this.formFields.goal,
+			affirmation: this.formFields.affirmation,
 			tasks: [
-				this.task1,
-				this.task2,
-				this.task3
+				this.formFields.task1,
+				this.formFields.task2,
+				this.formFields.task3
 			],
 			taskStates: [
 				false,
@@ -46,9 +58,6 @@ export class NewPage implements OnInit {
 			timesCompleted: [],
 			gradients: []
 		};
-		
-		this._nc.navigateBack('/home');
-		this._ts.addTasklist(tasklist);
 	}
 
 }

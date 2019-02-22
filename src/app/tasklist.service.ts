@@ -84,7 +84,12 @@ export class TasklistService {
 		_stor.get('tasklists').then((val) => {
 			if(val){
 				this.tasklists = val;
-				console.log(this.tasklists);
+				for(let i = 0; i < this.tasklists.length; i++){
+					if(typeof this.tasklists[i].timesCompleted == "number"){
+						this.tasklists[i] = this.addGradient(this.tasklists[i]);
+						this.tasklists[i].timesCompleted = [];
+					}
+				}
 			} else {
 				_stor.set('tasklists', this.tasklists);
 			}
@@ -154,7 +159,6 @@ export class TasklistService {
 		if(count == 3){
 			this.tasklists[tasklist].disableEdit = true;
 			this.tasklists[tasklist].timesCompleted.push(this.createCompletedObject(tasklist));
-			console.log(this.tasklists[tasklist].timesCompleted);
 			this.completedTasklistsToday++;
 			this._e.publish('complete');
 		}

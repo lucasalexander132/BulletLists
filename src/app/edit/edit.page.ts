@@ -27,6 +27,7 @@ export class EditPage implements OnInit {
 		this.task1 = this.currentTasklist.tasks[0];
 		this.task2 = this.currentTasklist.tasks[1];
 		this.task3 = this.currentTasklist.tasks[2];
+
 	}
 
 	ngOnInit() {
@@ -37,6 +38,9 @@ export class EditPage implements OnInit {
 	}
 
 	completeList(){
+
+		let timesCompleted = this.currentTasklist.timesCompleted;
+		let gradients = this.currentTasklist.gradients;
 
 		let tasklist = {
 			title: this.title,
@@ -53,9 +57,13 @@ export class EditPage implements OnInit {
 				false
 			],
 			disableEdit: false,
-			timesCompleted: [],
-			gradients: []
+			timesCompleted: timesCompleted,
+			gradients: gradients
 		};
+
+		if(gradients.length == 0){
+			tasklist = this._ts.addGradient(tasklist);
+		}
 		
 		this._ts.editTasklist(tasklist);
 		this._nc.navigateBack('/home');
