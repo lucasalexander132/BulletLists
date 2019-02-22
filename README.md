@@ -19,6 +19,7 @@ Or visit it here https://play.google.com/store/apps/details?id=io.bulletlists.lu
 - Translate for centering is pretty cool
 - Communication between components creates dependence hierarchies I don't like looking at. I try to strive for components that can be as independent as possible, so though I love services, they still seem integral to some component structures. I want to look up alternative patterns that focus on component structure communication.
 - If you make a div absolute, rotate 180 degrees, and float right, you can add stuff left to right bottom to top!
+- **I made my first batch file for signing android apk's in Ionic, I'm so happy**
 
 ## What was used
 
