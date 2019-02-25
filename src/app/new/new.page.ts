@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { NavController, Events } from '@ionic/angular';
 import { TasklistService } from '../tasklist.service';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-new',
@@ -18,10 +19,30 @@ export class NewPage implements OnInit {
 		task2: "Second task",
 		task3: "Third task"
 	}
+	defaultForm = {
+		title: "Title",
+		goal: "This is the goal of your list",
+		affirmation: "Affirmation when you complete this list",
+		task1: "First task",
+		task2: "Second task",
+		task3: "Third task"
+	}
 
-	constructor(private _nc: NavController, private _ts: TasklistService) { }
+	darkMode: boolean = false;
+
+	constructor(private _nc: NavController, private _ts: TasklistService, private _ss: SettingsService,  private _e: Events) { }
 
 	ngOnInit() {
+
+		this.darkMode = this._ss.getSetting('darkMode');
+
+		this._e.subscribe('settings', ()=>{
+	    	this.darkMode = this._ss.getSetting('darkMode');
+	    });
+
+	    this._e.subscribe('updateSettings', ()=>{
+	    	this.darkMode = this._ss.getSetting('darkMode');
+	    });
 	}
 
 	back(){
@@ -35,7 +56,8 @@ export class NewPage implements OnInit {
 	}
 
 	clear(input){
-		this.formFields[input] = "";
+		if(this.defaultForm[input] == this.formFields[input])
+			this.formFields[input] = "";
 	}
 
 	createTasklist(){

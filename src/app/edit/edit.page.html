@@ -1,23 +1,25 @@
 <ion-content>
-	<div class="container center-div">
-		<input type="text" [(ngModel)]="title" class="h1" autofocus>
-		<div class="tiny-divider"></div>
-		<input type="text" [(ngModel)]="goal" class="h4">
-		<div class="tiny-divider"></div>
-		<input type="text" [(ngModel)]="affirmation" class="h4">
-		<div class="tiny-divider"></div>
-		<div class="tasks">
-			<textarea [(ngModel)]="task1" class="task"></textarea>
+	<div class="edit-page" [ngClass]="{'dark-mode': darkMode, 'light-mode': !darkMode}">
+		<div class="container center-div" [ngStyle]="{'color': gradients[0]}">
+			<input type="text" [(ngModel)]="title" class="h1" autofocus>
 			<div class="tiny-divider"></div>
-			<textarea [(ngModel)]="task2" class="task"></textarea>
+			<input type="text" [(ngModel)]="goal" class="h4" [ngStyle]="{'color': gradients[1]}">
 			<div class="tiny-divider"></div>
-			<textarea [(ngModel)]="task3" class="task"></textarea>
+			<input type="text" [(ngModel)]="affirmation" class="h4" [ngStyle]="{'color': gradients[1]}">
 			<div class="tiny-divider"></div>
+			<div class="tasks" [ngStyle]="{'color': gradients[1]}">
+				<textarea [(ngModel)]="task1" class="task"></textarea>
+				<div class="tiny-divider"></div>
+				<textarea [(ngModel)]="task2" class="task"></textarea>
+				<div class="tiny-divider"></div>
+				<textarea [(ngModel)]="task3" class="task"></textarea>
+				<div class="tiny-divider"></div>
+			</div>
+			<div class="confirmation-container">
+				<i class="fas fa-arrow-alt-circle-left fa-4x" (click)="back()"></i>
+				<i class="fas fa-check-circle fa-4x" (click)="completeList()" [ngStyle]="{'color': gradients[1]}"></i>
+			</div>
 		</div>
-		<div class="confirmation-container">
-			<i class="fas fa-arrow-alt-circle-left fa-4x" (click)="back()"></i>
-			<i class="fas fa-check-circle fa-4x" (click)="completeList()"></i>
-		</div>
+		
 	</div>
-	
 </ion-content>

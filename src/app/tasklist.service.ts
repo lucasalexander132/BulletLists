@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
 import chroma from 'chroma-js';
+import _ from 'lodash';
 
 export interface Tasklist {
   title: string;
@@ -72,7 +73,7 @@ export class TasklistService {
 
 	constructor(private _e: Events, private _stor: Storage, private _http: HttpClient) {
 
-		// this.tasklists[0].timesCompleted = this.testColors(200);
+		
 
 		// this.storeTasklists();
 		// _stor.set('completedTasklistsToday', 0);
@@ -84,12 +85,7 @@ export class TasklistService {
 		_stor.get('tasklists').then((val) => {
 			if(val){
 				this.tasklists = val;
-				for(let i = 0; i < this.tasklists.length; i++){
-					if(typeof this.tasklists[i].timesCompleted == "number"){
-						this.tasklists[i] = this.addGradient(this.tasklists[i]);
-						this.tasklists[i].timesCompleted = [];
-					}
-				}
+				// this.tasklists[0].timesCompleted = this.testColors(1000);
 			} else {
 				_stor.set('tasklists', this.tasklists);
 			}
@@ -150,13 +146,7 @@ export class TasklistService {
 		this.tasklists[tasklist].taskStates[task] = state;
 		let taskStates = this.tasklists[tasklist].taskStates;
 
-		let count = 0;
-		for(let i = 0; i < taskStates.length; i++){
-			if(taskStates[i])
-				count++;
-		}
-
-		if(count == 3){
+		if(_.compact(taskStates).length == 3){
 			this.tasklists[tasklist].disableEdit = true;
 			this.tasklists[tasklist].timesCompleted.push(this.createCompletedObject(tasklist));
 			this.completedTasklistsToday++;
@@ -191,9 +181,8 @@ export class TasklistService {
 
 	deleteCurrentList(){
 		this.tasklists.splice(this.activeTasklist, 1);
-		if(this.tasklists.length == 0){
-			this.tasklists.push(this.defaultTasklist);
-		}
+		if(this.tasklists.length == this.activeTasklist)
+			this.activeTasklist--;
 		this.update();
 	}
 
@@ -224,13 +213,18 @@ export class TasklistService {
 		let chromaArray = chroma.scale([start,end])
     		.mode('lch').colors(10);
     	let randIndex = Math.floor(Math.random() * chromaArray.length);
+    	let modifier = Math.random() * 10; // Just for leniances to tamper
+    	if(modifier > 7){
+    		return chroma(chromaArray[randIndex]).brighten(1).hex();
+    	} else if(modifier < 3){
+    		return chroma(chromaArray[randIndex]).darken(2).hex();
+    	}
 	    return chromaArray[randIndex];
 	}
 
 	// testColors(num: number){
 	// 	let colorsArray = [];
 	// 	let chromaArray = chroma.scale(["#02AAB0", "#00CDAC"]).mode('lch').colors(num);
-	// 	console.log(chromaArray);
 	// 	for(let i = 0; i < num; i++){
 	// 		colorsArray.push({
 	// 			"color": chromaArray[i]

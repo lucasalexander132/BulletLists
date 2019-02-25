@@ -1,12 +1,15 @@
-ion-content {
+.edit-page {
 	font-family: 'Montserrat', sans-serif !important;
 	overflow: hidden;
+	height: 100vh;
+	width: 100vw;
 }
 
 input {
 	border: 0px solid transparent;
 	display: block;
 	width: 100%;
+	background-color: transparent;
 }
 
 textarea {
@@ -14,6 +17,11 @@ textarea {
 	display: block;
 	width: 100%;
 	resize: none;
+	background-color: transparent;
+}
+
+input:focus, textarea:focus {
+	outline: none;
 }
 
 .tiny-divider {
@@ -22,10 +30,6 @@ textarea {
 	background-color: black;
 	margin-top: 3px;
 	margin-bottom: 15px;
-}
-
-input:focus, textarea:focus {
-	outline: none;
 }
 
 .h1 {
@@ -40,8 +44,15 @@ input:focus, textarea:focus {
 }
 
 .container {
-	width: 250px;
+	width: 400px;
 	letter-spacing: 1px;
+}
+
+.confirmation-container {
+	position: relative;
+	width: 100%;
+	display: block;
+	margin: 0 auto;
 }
 
 .center-div {
@@ -57,13 +68,6 @@ input:focus, textarea:focus {
 
 .tasks {
 	padding: 15px 25px;
-}
-
-.confirmation-container {
-	position: relative;
-	width: 80vw;
-	display: block;
-	margin: 0 auto;
 }
 
 i {

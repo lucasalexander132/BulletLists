@@ -1,0 +1,20 @@
+.fa-arrow-alt-circle-left {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding: 15px;
+}
+
+header {
+	position: relative;
+	padding: 15px;
+	height: 50px;
+	text-align: center;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	z-index: 1000;
+}
+
+.container {
+	padding: 15px 0;
+	height: 100%;
+}

@@ -1,13 +1,16 @@
-<i class="fas fa-ellipsis-v fa-2x" (click)="toggleMenu()"></i>
+<i [ngStyle]="{'color': color}" class="fas fa-ellipsis-v fa-2x" (click)="toggleMenu()"></i>
 
-<div class="menu" *ngIf="menuState">
+<div [ngStyle]="{'color': color}" class="menu" [ngClass]="{'dark-mode-2': darkMode, 'light-mode-2': !darkMode}" *ngIf="menuState">
 	<i class="fas fa-times fa-2x" (click)="toggleMenu()"></i>
 
 	<div class="menu-items">
 		<p (click)="newTasklist()">New List</p>
 		<p (click)="editTasklist()">Edit This</p>
-		<p (click)="confirm()" *ngIf="tasklists.length > 1">Delete This</p>
+		<p (click)="confirmDelete()" *ngIf="tasklists.length > 1">Delete This</p>
 		<p class="yes-no" *ngIf="viewingConfirmation"><span (click)="delete()">yes</span> / <span (click)="cancelDelete()">no</span></p>
 	</div>
+	<div class="settings-container">
+		<i class="fas fa-cog fa-2x" (click)="settings()"></i>
+	</div>	
 	
 </div>

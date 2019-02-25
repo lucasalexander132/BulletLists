@@ -7,6 +7,7 @@ import { TsTrackerComponent } from '../ts-tracker/ts-tracker.component';
 import { MenuComponent } from '../menu/menu.component';
 import { TaskListComponent } from '../task-list/task-list.component';
 import { TaskComponent } from '../task/task.component';
+import { HeartIconDirective } from '../heart-icon.directive';
 
 import { HomePage } from './home.page';
 
@@ -22,6 +23,6 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage, TsTrackerComponent, MenuComponent, TaskListComponent, TaskComponent ]
+  declarations: [HomePage, TsTrackerComponent, MenuComponent, TaskListComponent, TaskComponent, HeartIconDirective ]
 })
 export class HomePageModule {}

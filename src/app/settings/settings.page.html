@@ -1,0 +1,7 @@
+<ion-content>
+	<header [ngClass]="{'dark-mode-2': darkMode, 'light-mode-2': !darkMode}">Settings</header>
+	<div class="container" [ngClass]="{'dark-mode': darkMode, 'light-mode': !darkMode}">
+		<option-item [name]="'Dark Mode'" [on]="darkMode" (switched)="darkModeSwitched()"></option-item>
+	  	<i class="fas fa-arrow-alt-circle-left fa-2x" (click)="back()"></i>
+	</div>
+</ion-content>
