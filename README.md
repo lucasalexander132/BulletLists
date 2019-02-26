@@ -23,6 +23,7 @@ Or visit it here https://play.google.com/store/apps/details?id=io.bulletlists.lu
 
 ## What was used
 
+- **Lodash**
 - **Moment.js**
 - **Chroma.js**
 - **Angular v6**
