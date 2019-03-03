@@ -24,6 +24,7 @@ Or visit it here https://play.google.com/store/apps/details?id=io.bulletlists.lu
 - **Moment.js**
 - **Angular v6**
 - **Ionic v4**
+- **Cordova plugins**
 - **HttpClient**
 - **JSON**
 - **Font Awesome**
@@ -33,6 +34,3 @@ Or visit it here https://play.google.com/store/apps/details?id=io.bulletlists.lu
 
 - Add a stats page! I want to know what bullet lists I'm doing the most. What day was my best day, what was my score yesterday, etc.
 - Add taskist genres (cleaning, coding, music, etc.) and be able to reorder tasklists, delete whole generes without removing the below lists, delete whole genres with removal, editing.
-- Add that stupid xml tag that keeps the view from rotating. That damn thing needs to be default.
-- Make the menu hitbox bigger
-- Make the menu area fixed with a higher z-index
