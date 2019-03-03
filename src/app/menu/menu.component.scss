@@ -1,18 +1,7 @@
-.fa-times, .fa-ellipsis-v {
+i {
     position: absolute;
-	padding: 25px;
+	margin: 25px;
 	right: -100vw;
-}
-
-.fa-cog, .fa-heart {
-	padding: 25px;
-}
-
-.settings-container {
-	position: absolute;
-	width: 100%;
-	text-align: center;
-	bottom: 20px;
 }
 
 .fa-times {
@@ -22,16 +11,12 @@
 .menu {
 	position: absolute;
 	right: -100vw;
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	background-color: black;
 	width: 250px;
 	height: 100vh;
 	color: white;
 	font-weight: bold;
 	z-index: 100;
-}
-
-i {
-	transition: color .2s;
 }
 
 p {

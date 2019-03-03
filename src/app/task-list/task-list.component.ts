@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TasklistService } from '../tasklist.service';
-import { SettingsService } from '../settings.service';
 import { ViewChild } from '@angular/core';
 import { Events, IonSlides, Config, Platform } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
@@ -10,7 +9,7 @@ import { AlertController } from '@ionic/angular';
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss'],
-  providers: [ IonSlides, Config, Platform ]
+  providers: [ IonSlides, Config, Platform]
 })
 export class TaskListComponent implements OnInit {
 
@@ -18,9 +17,8 @@ export class TaskListComponent implements OnInit {
 	tasklists: Array<Object>;
 	tasklistService: TasklistService;
 	currentTasklist: number = 0;
-	darkMode: boolean = false;
 
-	constructor(private _ts: TasklistService, private _e: Events, private _ac: AlertController, private _ss: SettingsService) {
+	constructor(private _ts: TasklistService, private _e: Events, private _ac: AlertController) {
 		this.tasklistService = _ts;
 		this.tasklists = _ts.getTasklists();
 	}
@@ -31,7 +29,6 @@ export class TaskListComponent implements OnInit {
 			// If I was smart I would have implemented getTasklists as a promise. Remember for the future.
 			setTimeout(()=>{
 				this.slides.update();
-				this._e.publish('swipe');
 			}, 300);
 		});
 
@@ -47,14 +44,6 @@ export class TaskListComponent implements OnInit {
 		this._e.subscribe('tasklists', ()=>{
 			this.tasklists = this.tasklistService.getTasklists();
 		});
-
-		this._e.subscribe('settings', ()=>{
-	    	this.darkMode = this._ss.getSetting('darkMode');
-	    });
-
-	    this._e.subscribe('updateSettings', ()=>{
-	    	this.darkMode = this._ss.getSetting('darkMode');
-	    });
 	}
 
 	completeTask(tasklist: number, task: number, state: boolean){
@@ -62,7 +51,6 @@ export class TaskListComponent implements OnInit {
 	}
 
 	ionSlideDidChange(event){
-		this._e.publish('swipe');
 		this.tasklistService.setActiveTasklist(this.slides.getActiveIndex());
 	}
 

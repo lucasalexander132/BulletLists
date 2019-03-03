@@ -10,23 +10,12 @@ import { TasklistService } from '../tasklist.service';
 export class TsTrackerComponent implements OnInit {
 
 	completedTasklistsToday: number;
-  color: string = "black";
 
   constructor(private _e: Events, private _ts: TasklistService) {
   	this.completedTasklistsToday = this._ts.getCompletedTasklistsToday();
   }
 
   ngOnInit() {
-    this._e.subscribe('tasklists', ()=>{
-      this.color = this._ts.getCurrentTasklist().gradients[0];
-    });
-
-    this._e.subscribe('swipe', ()=>{
-      setTimeout(()=>{
-        this.color = this._ts.getCurrentTasklist().gradients[0];
-      }, 100);        
-    });
-
   	this._e.subscribe('complete', ()=>{
   		this.completedTasklistsToday++;
   	});

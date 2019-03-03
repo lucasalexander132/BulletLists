@@ -1,25 +1,23 @@
 <ion-content>
-	<div class="new-page" [ngClass]="{'dark-mode': darkMode, 'light-mode': !darkMode}">
-		<div class="container center-div">
-			<input type="text" [(ngModel)]="formFields.title" (click)="clear('title')" placeholder="Title" class="h1" autofocus>
+	<div class="container center-div">
+		<input type="text" [(ngModel)]="title" class="h1" autofocus>
+		<div class="tiny-divider"></div>
+		<input type="text" [(ngModel)]="goal" class="h4">
+		<div class="tiny-divider"></div>
+		<input type="text" [(ngModel)]="affirmation" class="h4">
+		<div class="tiny-divider"></div>
+		<div class="tasks">
+			<textarea [(ngModel)]="task1" class="task"></textarea>
 			<div class="tiny-divider"></div>
-			<input type="text" [(ngModel)]="formFields.goal" (click)="clear('goal')" placeholder="This is the goal of your list" class="h4">
+			<textarea [(ngModel)]="task2" class="task"></textarea>
 			<div class="tiny-divider"></div>
-			<input type="text" [(ngModel)]="formFields.affirmation" (click)="clear('affirmation')" placeholder="Affirmation when you complete this list" class="h4">
+			<textarea [(ngModel)]="task3" class="task"></textarea>
 			<div class="tiny-divider"></div>
-			<div class="tasks">
-				<textarea [(ngModel)]="formFields.task1" (click)="clear('task1')" placeholder="First task" class="task"></textarea>
-				<div class="tiny-divider"></div>
-				<textarea [(ngModel)]="formFields.task2" (click)="clear('task2')" placeholder="Second task" class="task"></textarea>
-				<div class="tiny-divider"></div>
-				<textarea [(ngModel)]="formFields.task3" (click)="clear('task3')" placeholder="Third task" class="task"></textarea>
-				<div class="tiny-divider"></div>
-			</div>
-			<div class="confirmation-container">
-				<i class="fas fa-arrow-alt-circle-left fa-4x" (click)="back()"></i>
-				<i class="fas fa-check-circle fa-4x" (click)="completeList()"></i>
-			</div>
 		</div>
-		
+		<div class="confirmation-container">
+			<i class="fas fa-arrow-alt-circle-left fa-4x" (click)="back()"></i>
+			<i class="fas fa-check-circle fa-4x" (click)="completeList()"></i>
+		</div>
 	</div>
+	
 </ion-content>

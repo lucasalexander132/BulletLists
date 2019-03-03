@@ -4,8 +4,6 @@ import { Storage } from '@ionic/storage';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
-import chroma from 'chroma-js';
-import _ from 'lodash';
 
 export interface Tasklist {
   title: string;
@@ -14,7 +12,7 @@ export interface Tasklist {
   tasks: Array<string>;
   taskStates: Array<boolean>;
   disableEdit: boolean;
-  timesCompleted: Array<Object>;
+  timesCompleted: number;
   gradients: Array<string>;
 }
 
@@ -39,7 +37,7 @@ export class TasklistService {
 				false
 			],
 			disableEdit: false,
-			timesCompleted: [],
+			timesCompleted: 0,
 			gradients: [
 				"#02AAB0",
 				"#00CDAC"
@@ -61,7 +59,7 @@ export class TasklistService {
 			false
 		],
 		disableEdit: false,
-		timesCompleted: [],
+		timesCompleted: 0,
 		gradients: [
 			"#02AAB0",
 			"#00CDAC"
@@ -69,23 +67,19 @@ export class TasklistService {
 	}
 	private activeTasklist: number = 0;
 	private completedTasklistsToday = 0;
-	private gradients = [];
+	private gradients: Array<any>;
 
 	constructor(private _e: Events, private _stor: Storage, private _http: HttpClient) {
 
-		
-
 		// this.storeTasklists();
-		// _stor.set('completedTasklistsToday', 0);
 
-		_http.get('../assets/gradients.json').subscribe((data: Array<Object>) => {
+		_http.get('../assets/gradients.json').subscribe(data => {
 			this.gradients = data;
 		});
 
 		_stor.get('tasklists').then((val) => {
 			if(val){
 				this.tasklists = val;
-				// this.tasklists[0].timesCompleted = this.testColors(1000);
 			} else {
 				_stor.set('tasklists', this.tasklists);
 			}
@@ -146,20 +140,20 @@ export class TasklistService {
 		this.tasklists[tasklist].taskStates[task] = state;
 		let taskStates = this.tasklists[tasklist].taskStates;
 
-		if(_.compact(taskStates).length == 3){
+		let count = 0;
+		for(let i = 0; i < taskStates.length; i++){
+			if(taskStates[i])
+				count++;
+		}
+
+		if(count == 3){
 			this.tasklists[tasklist].disableEdit = true;
-			this.tasklists[tasklist].timesCompleted.push(this.createCompletedObject(tasklist));
+			this.tasklists[tasklist].timesCompleted++;
 			this.completedTasklistsToday++;
 			this._e.publish('complete');
 		}
 
 		this.storeAll();
-	}
-
-	createCompletedObject(tasklist: number){
-		return {
-			"color": this.getRandomColor(this.tasklists[tasklist].gradients[0], this.tasklists[tasklist].gradients[1])
-		}	
 	}
 
 	resetTasklist(){
@@ -181,8 +175,9 @@ export class TasklistService {
 
 	deleteCurrentList(){
 		this.tasklists.splice(this.activeTasklist, 1);
-		if(this.tasklists.length == this.activeTasklist)
-			this.activeTasklist--;
+		if(this.tasklists.length == 0){
+			this.tasklists.push(this.defaultTasklist);
+		}
 		this.update();
 	}
 
@@ -207,30 +202,5 @@ export class TasklistService {
 		tasklist.gradients = [this.gradients[randIndex].colors[0], this.gradients[randIndex].colors[1]];
 		return tasklist;
 	}
-
-	// I could send it the gradients array but I want to keep it reusable
-	getRandomColor(start, end){
-		let chromaArray = chroma.scale([start,end])
-    		.mode('lch').colors(10);
-    	let randIndex = Math.floor(Math.random() * chromaArray.length);
-    	let modifier = Math.random() * 10; // Just for leniances to tamper
-    	if(modifier > 7){
-    		return chroma(chromaArray[randIndex]).brighten(1).hex();
-    	} else if(modifier < 3){
-    		return chroma(chromaArray[randIndex]).darken(2).hex();
-    	}
-	    return chromaArray[randIndex];
-	}
-
-	// testColors(num: number){
-	// 	let colorsArray = [];
-	// 	let chromaArray = chroma.scale(["#02AAB0", "#00CDAC"]).mode('lch').colors(num);
-	// 	for(let i = 0; i < num; i++){
-	// 		colorsArray.push({
-	// 			"color": chromaArray[i]
-	// 		})
-	// 	}
-	// 	return colorsArray;
-	// }
 
 }

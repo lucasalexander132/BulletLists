@@ -1,13 +1,10 @@
-.new-page {
+ion-content {
 	font-family: 'Montserrat', sans-serif !important;
 	overflow: hidden;
-	height: 100vh;
-	width: 100vw;
 }
 
 input {
 	border: 0px solid transparent;
-	background-color: transparent;
 	display: block;
 	width: 100%;
 }
@@ -17,7 +14,14 @@ textarea {
 	display: block;
 	width: 100%;
 	resize: none;
-	background-color: transparent;
+}
+
+.tiny-divider {
+	height: 0px;
+	width: 100px;
+	background-color: black;
+	margin-top: 3px;
+	margin-bottom: 15px;
 }
 
 input:focus, textarea:focus {
@@ -36,7 +40,7 @@ input:focus, textarea:focus {
 }
 
 .container {
-	width: 400px;
+	width: 250px;
 	letter-spacing: 1px;
 }
 
@@ -57,7 +61,7 @@ input:focus, textarea:focus {
 
 .confirmation-container {
 	position: relative;
-	width: 100%;
+	width: 80vw;
 	display: block;
 	margin: 0 auto;
 }
